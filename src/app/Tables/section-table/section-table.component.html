@@ -1,0 +1,50 @@
+<div class="row my-2">
+    <form [formGroup]="form">
+        <div class="col-md-4">
+            <input type="text" formControlName="itemName" class="form-control" placeholder="serch by item name">
+        </div>
+    </form>
+</div>
+<div class="row">
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th rowspan="2">item name</th>
+                    <th colspan="2" *ngFor="let section of sectionsData">{{section.sectionName}} {{section.sectionOrder}}</th>
+                </tr>
+                <tr>
+                    <ng-container *ngFor="let section of sectionsData">
+                        <th>plan Qty</th>
+                        <th>Qty</th>
+                    </ng-container>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                <ng-container *ngFor="let item of filteredTransformData">
+                        <tr>
+                            <td>{{item.itemName}}</td>
+                            <ng-container *ngFor="let section of sectionsData">
+                                <td>{{item[section.sectionName]?.productionPlanQty}}</td>
+                                <td>
+                                    {{item[section.sectionName]?.qty}}
+                                        <ul class="myList">
+                                            <li *ngFor="let rq of item[section.sectionName]?.rateTypeDatas;let i = index">
+                                              {{item[section.sectionName].rateTypeDatas[i].rateTypeName}}
+                                            </li>
+                                        </ul>
+                                    
+                                </td>
+                                
+                            </ng-container>
+                        </tr>
+                </ng-container>
+                <tr>
+                    
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+

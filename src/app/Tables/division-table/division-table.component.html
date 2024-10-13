@@ -1,0 +1,22 @@
+
+<div class="table-responsive">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Division Id</th>
+                <th>Division Name</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let division of divisionData">
+               <td>{{division.divisionId}}</td>
+               <td>{{division.divisionName}}</td>
+               <td>
+                <!-- <button class="btn btn-primary" [routerLink]="['/division',division.divisionId,'section']">Go to the Section</button> -->
+               </td>
+            </tr>
+        </tbody>
+       
+    </table>
+</div>
